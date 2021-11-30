@@ -1,0 +1,44 @@
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using AoC2021.Tasks;
+
+namespace AoC2021
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            if (args.Any(x => !Regex.IsMatch(x, "[0-9]+")))
+            {
+                Console.WriteLine("AoC 2021 Runner!");
+                Console.WriteLine("----------------");
+                Console.WriteLine("dotnet run -- <TaskNumber (1-24)> ([<TaskNumber (1-24)>])");
+            }
+
+            foreach (var arg in args)
+            {
+                Console.WriteLine(arg);
+                try
+                {
+                    var instance = Activator.CreateInstance("AoC2021", "AoC2021.Tasks.Task" + arg).Unwrap() as ITask;
+                    var inputPath = Path.Combine(Path.Combine(
+                        new DirectoryInfo(Assembly.GetExecutingAssembly().Location).Parent.Parent.Parent.Parent.Parent
+                            .FullName,
+                        "input"
+                    ), arg);
+                    instance.InputPath = inputPath;
+                    Console.WriteLine($"[{arg}] - Result (simple): {instance.RunTask()}");
+                    Console.WriteLine($"[{arg}] - Result (advanced): {instance.RunTaskExtended()}");
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+        }
+    }
+}

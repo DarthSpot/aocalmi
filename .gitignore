@@ -1,0 +1,10 @@
+/.vs/xfiles.desktop/
+/.idea/.idea.xfiles.desktop/.idea/
+.idea/
+.vscode/
+.vs/
+
+bin/
+obj/
+
+*.user
