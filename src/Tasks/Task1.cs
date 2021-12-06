@@ -10,10 +10,8 @@ namespace AoC2021.Tasks
     {
         public override TaskResult RunTask()
         {
-            var input = InitTaskLines();
-            var data = input.Select(x => Convert.ToInt32(x)).ToArray();
+            var data = InitTaskLines().Select(x => Convert.ToInt32(x)).ToArray();
             var result = data.Zip(data.Skip(1), (x, y) => y > x).Count(x => x);
-
             return GetResult(result);
         }
 
