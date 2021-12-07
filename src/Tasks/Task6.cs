@@ -11,6 +11,7 @@ namespace AoC2021.Tasks
             var input = InitTaskString().Split(',')
                 .Select(x => Convert.ToInt64(x))
                 .ToList();
+            
             var swarm = Enumerable.Repeat(0L, 7).ToArray();
             foreach (var fish in input)
                 swarm[fish] += 1;
@@ -27,7 +28,7 @@ namespace AoC2021.Tasks
             
             return GetResult((swarm.Sum() + addBuffer.Sum()).ToString());
         }
-
+        
         public override TaskResult RunTaskExtended()
         {
             var input = InitTaskString().Split(',')
