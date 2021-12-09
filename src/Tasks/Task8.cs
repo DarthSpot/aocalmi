@@ -13,6 +13,7 @@ namespace AoC2021.Tasks
                 .Select(x => x[1].Trim().Split(" "))
                 .SelectMany(x => x)
                 .Select(x => x.Length).ToArray();
+            
             return GetResult(input.Count(x => new[] { 2, 3, 4, 7 }.Contains(x)));
         }
 
@@ -20,7 +21,8 @@ namespace AoC2021.Tasks
         {
             (string[] input, string[] value)[] input =
                 InitTaskLines().Select(x => x.Split('|'))
-                    .Select(x => (x[0].Trim().Split(" "), x[1].Trim().Split(" "))).ToArray();
+                    .Select(x => (x[0].Trim().Split(" "), 
+                        x[1].Trim().Split(" "))).ToArray();
 
             return GetResult(input.Select(row =>
             {
