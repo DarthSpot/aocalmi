@@ -12,23 +12,21 @@ namespace AoC2021.Tasks
     {
         public override TaskResult RunTask()
         {
-            var input = InitTaskString().Trim().Split("\n").Select(x => x.Select(c => c - '0').ToArray()).ToList();
-            var lowPoints = new List<int>();
+            var input = InitTaskString()
+                .Trim()
+                .Split("\n")
+                .Select(x => x.Select(c => c - '0').ToArray())
+                .ToList();
             var w = input[0].Length;
             var h = input.Count;
-            
-            for (var x = 0; x < w; x++)
-            {
-                for (var y = 0; y < h; y++)
-                {
-                    var neighbors = GetNeighbors(x, y, w, h).Select(n => input[n.y][n.x]).ToArray();
-                    if (neighbors.Min() > input[y][x])
-                        lowPoints.Add(input[y][x]);
 
-                }
-            }
+            List<(int x, int y)> lowPoints = input.SelectMany(x => x)
+                .Select((p, i) => (i % w, i / w, p))
+                .Where(p => GetNeighbors(p.Item1, p.Item2, w, h).Select(n => input[n.y][n.x]).Min() > p.p)
+                .Select(x => (x.Item1, x.Item2))
+                .ToList();
             
-            return GetResult(lowPoints.Select(x => x + 1).Sum());
+            return GetResult(lowPoints.Select(x => input[x.y][x.x] + 1).Sum());
         }
 
         public IEnumerable<(int x, int y)> GetNeighbors(int x, int y, int width, int height)
@@ -53,9 +51,8 @@ namespace AoC2021.Tasks
                 .Where(p => GetNeighbors(p.Item1, p.Item2, w, h).Select(n => input[n.y][n.x]).Min() > p.p)
                 .Select(x => (x.Item1, x.Item2))
                 .ToList();
-            
-            var basins = new List<List<(int x, int y)>>();
-            foreach (var lp in lowPoints)
+
+            var basins = lowPoints.Select(lp =>
             {
                 var basin = new List<(int x, int y)>();
                 var newItems = new List<(int x, int y)> { lp };
@@ -66,14 +63,12 @@ namespace AoC2021.Tasks
                     newItems.AddRange(basin.Select(item => GetNeighbors(item.x, item.y, w, h)
                             .Where(x => !basin.Contains(x))
                             .Where(b => input[b.y][b.x] < 9)
-                            .Where(b => input[b.y][b.x] > input[item.y][item.x])
-                            .ToList())
+                            .Where(b => input[b.y][b.x] > input[item.y][item.x]))
                         .SelectMany(x => x)
                         .Distinct());
                 }
-
-                basins.Add(basin.Distinct().ToList());
-            }
+                return basin.Distinct().ToList();
+            }).ToList();
 
             PrintBasin(input, basins.SelectMany(x => x).ToList(), w, h);
             return GetResult(basins.Select(x => x.Count).OrderByDescending(x => x).Take(3).Aggregate((x, y) => x * y));
