@@ -93,11 +93,7 @@ namespace AoC2021.Tasks
                     var possibleRoutes = routes[current]
                         .Where(x => x.r.All(char.IsUpper) || !route.Contains(x.r) || !hasVistedTwice)
                         .ToList();
-                    if (!possibleRoutes.Any())
-                    {
-                    
-                    }
-                    else
+                    if (possibleRoutes.Any())
                     {
                         foreach (var altRoute in possibleRoutes.Skip(1)
                                      .Select(otherRoute => new List<string>(route.Append(otherRoute.r))))
