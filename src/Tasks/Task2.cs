@@ -4,7 +4,7 @@ namespace AoC2021.Tasks
 {
     public class Task2 : ITask 
     {
-        public override TaskResult RunTask()
+        public override TaskResult RunPartOne()
         {
             var input = InitTaskLines();
             var x = 0;
@@ -30,7 +30,7 @@ namespace AoC2021.Tasks
             return GetResult(x * y);
         }
 
-        public override TaskResult RunTaskExtended()
+        public override TaskResult RunPartTwo()
         {
             var input = InitTaskLines();
             var aim = 0;

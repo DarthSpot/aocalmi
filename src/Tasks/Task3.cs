@@ -5,7 +5,7 @@ namespace AoC2021.Tasks
 {
     public class Task3 : ITask
     {
-        public override TaskResult RunTask()
+        public override TaskResult RunPartOne()
         {
             var input = InitTaskLines();
             var lines = input.Length;
@@ -25,7 +25,7 @@ namespace AoC2021.Tasks
             return GetResult(epsilon * gamma);
         }
 
-        public override TaskResult RunTaskExtended()
+        public override TaskResult RunPartTwo()
         {
             var input = InitTaskLines();
             var counter = new Func<string[], int, (char lcb,char mcb)>((data, pos) =>

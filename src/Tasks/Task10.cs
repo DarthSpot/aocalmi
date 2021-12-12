@@ -7,7 +7,7 @@ namespace AoC2021.Tasks
 {
     public class Task10 : ITask
     {
-        public override TaskResult RunTask()
+        public override TaskResult RunPartOne()
         {
             var input = InitTaskLines();
             var match = new Dictionary<char, char>()
@@ -56,7 +56,7 @@ namespace AoC2021.Tasks
             return GetResult(errors.Select(x => points[x]).Sum());
         }
 
-        public override TaskResult RunTaskExtended()
+        public override TaskResult RunPartTwo()
         {
             var input = InitTaskLines();
             var match = new Dictionary<char, char>()

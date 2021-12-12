@@ -6,7 +6,7 @@ namespace AoC2021.Tasks
 {
     public class Task4 : ITask
     {
-        public override TaskResult RunTask()
+        public override TaskResult RunPartOne()
         {
             var input = InitTaskLines();
             var nums = input[0].Split(',').Select(x => Convert.ToInt32(x)).ToArray();
@@ -49,7 +49,7 @@ namespace AoC2021.Tasks
             return GetResult("Error");
         }
 
-        public override TaskResult RunTaskExtended()
+        public override TaskResult RunPartTwo()
         {
             var input = InitTaskLines();
             var nums = input[0].Split(',').Select(x => Convert.ToInt32(x)).ToArray();

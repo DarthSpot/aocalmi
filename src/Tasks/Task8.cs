@@ -7,7 +7,7 @@ namespace AoC2021.Tasks
 {
     public class Task8 : ITask
     {
-        public override TaskResult RunTask()
+        public override TaskResult RunPartOne()
         {
             var input = InitTaskLines().Select(x => x.Split('|'))
                 .Select(x => x[1].Trim().Split(" "))
@@ -17,7 +17,7 @@ namespace AoC2021.Tasks
             return GetResult(input.Count(x => new[] { 2, 3, 4, 7 }.Contains(x)));
         }
 
-        public override TaskResult RunTaskExtended()
+        public override TaskResult RunPartTwo()
         {
             (string[] input, string[] value)[] input =
                 InitTaskLines().Select(x => x.Split('|'))

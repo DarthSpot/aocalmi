@@ -6,8 +6,8 @@ namespace AoC2021.Tasks
     public abstract class ITask
     {
         public string InputPath { get; set; }
-        public abstract TaskResult RunTask();
-        public abstract TaskResult RunTaskExtended();
+        public abstract TaskResult RunPartOne();
+        public abstract TaskResult RunPartTwo();
         protected Stopwatch Stopwatch { get; } = new Stopwatch();
         protected string[] InitTaskLines()
         {

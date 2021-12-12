@@ -30,8 +30,8 @@ namespace AoC2021
                         "input"
                     ), arg);
                     instance.InputPath = inputPath;
-                    Console.WriteLine($"[{arg}] - Result (simple): {instance.RunTask()}");
-                    Console.WriteLine($"[{arg}] - Result (advanced): {instance.RunTaskExtended()}");
+                    Console.WriteLine($"[{arg}] - Result (simple): {instance.RunPartOne()}");
+                    Console.WriteLine($"[{arg}] - Result (advanced): {instance.RunPartTwo()}");
                     
                 }
                 catch (Exception ex)

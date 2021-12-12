@@ -10,7 +10,7 @@ namespace AoC2021.Tasks
 {
     public class Task9 : ITask
     {
-        public override TaskResult RunTask()
+        public override TaskResult RunPartOne()
         {
             var input = InitTaskString()
                 .Trim()
@@ -36,7 +36,7 @@ namespace AoC2021.Tasks
         }
 
 
-        public override TaskResult RunTaskExtended()
+        public override TaskResult RunPartTwo()
         {
             var input = InitTaskString()
                 .Trim()

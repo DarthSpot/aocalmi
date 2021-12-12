@@ -11,7 +11,7 @@ namespace AoC2021.Tasks
 {
     public class Task5 : ITask
     {
-        public override TaskResult RunTask()
+        public override TaskResult RunPartOne()
         {
             var input = InitTaskLines();
             var vents = input
@@ -100,7 +100,7 @@ namespace AoC2021.Tasks
             Console.WriteLine(path);
         }
 
-        public override TaskResult RunTaskExtended()
+        public override TaskResult RunPartTwo()
         {
             var input = InitTaskLines();
             var vents = input
