@@ -27,6 +27,12 @@ namespace AoC2021.Tasks
             return new TaskResult(result.ToString(), Stopwatch.Elapsed);
         }
         
+        protected TaskResult GetResult(long result)
+        {
+            Stopwatch.Stop();
+            return new TaskResult(result.ToString(), Stopwatch.Elapsed);
+        }
+        
         protected TaskResult GetResult(string result)
         {
             Stopwatch.Stop();
