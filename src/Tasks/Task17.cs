@@ -46,17 +46,16 @@ namespace AoC2021.Tasks
         {
             var input = InitTaskString();
             var regex = Regex.Match(input, "target area: x=([0-9-]+)..([0-9-]+), y=([0-9-]+)..([0-9-]+)");
-            var (minx, maxx) = (Convert.ToInt32(regex.Groups[1].Value), Convert.ToInt32(regex.Groups[2].Value));
-            var (maxy, miny) = (Convert.ToInt32(regex.Groups[3].Value), Convert.ToInt32(regex.Groups[4].Value));
-
+            var g = Range(1, 4).Select(g => Convert.ToInt32(regex.Groups[g].Value)).ToArray();
+            var (minx, maxx, maxy, miny) = (g[0], g[1], g[2], g[3]);
             var xrange = Range(minx, maxx).ToArray();
             var yrange = Range(miny, maxy).ToArray();
-            var velocities = Enumerable.Range(1, maxx)
+            
+            var validXVelocities = Enumerable.Range(1, maxx)
                 .Where(x =>
                 Enumerable.Range(1, x).Select(d => Range(x, 0).Take(d).Sum()).Any(d => xrange.Contains(d)))
                 .ToList();
-            var ys = Range(maxy * 2, Math.Abs(maxy) * 2).ToArray();
-            var velos = (from velo in velocities from yvelo in ys select (velo, yvelo)).ToList();
+            var possibleYVelocities = Range(maxy * 2, Math.Abs(maxy) * 2).ToArray();
 
             var doesithit = new Func<int, int, bool>((x, y) =>
             {
@@ -67,16 +66,15 @@ namespace AoC2021.Tasks
                     if (xrange.Contains(cx) && yrange.Contains(cy))
                         return true;
                     cx += x;
-                    cy += y;
                     if (x > 0)
                         x--;
-                    y -= 1;
+                    cy += y--;
                 }
 
                 return false;
             });
 
-            return GetResult(velos.Count(x => doesithit(x.velo, x.yvelo)));
+            return GetResult((from velo in validXVelocities from yvelo in possibleYVelocities select (velo, yvelo)).Count(x => doesithit(x.velo, x.yvelo)));
         }
         
         
