@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace AoC2021.Tasks
 {
@@ -17,14 +20,21 @@ namespace AoC2021.Tasks
             return GetResult(proc.Pixels.Values.Sum());
         }
 
-        private void PrintImage(InfiniteImage img)
+        private void PrintImage(InfiniteImage img, int index)
         {
-            for (var y = img.YMin; y <= img.YMax; y++)
+            var w = 220;
+            var h = 220;
+            var image = new Image<Rgba32>(w, h);
+            for (var y = 0; y < h; y++)
             {
-                for (var x = img.XMin; x <= img.XMax; x++)
-                    Console.Write(img.GetPixel(x,y) == 0 ? '.' : '#');
-                Console.WriteLine();
+                for (var x = 0; x < w; x++)
+                {
+                    var px = x + img.XMin;
+                    var py = y + img.YMin;
+                    image[x,y] = img.GetPixel(px, py) == 0 ? Color.Black : Color.Yellow;
+                }
             }
+            image.SaveAsBmp(index + ".bmp");
         }
 
         public override TaskResult RunPartTwo()
@@ -32,12 +42,11 @@ namespace AoC2021.Tasks
             var input = InitTaskLines();
             var algorithm = input[0].Select(x => x == '.' ? 0 : 1).ToArray();
             var img = new InfiniteImage(input.Skip(2).ToList());
-
             for (var i = 0; i < 50; i++)
             {
+                PrintImage(img, i);
                 img = img.Process(algorithm);
             }
-            PrintImage(img);
             return GetResult(img.Pixels.Values.Sum());
         }
 
@@ -102,7 +111,7 @@ namespace AoC2021.Tasks
                 for (var x = XMin; x <= XMax; x++)
                     for (var y = YMin; y <= YMax; y++)
                         result.Pixels.Add((x,y), algorithm[GetIndexFromCoords(x,y)]);
-                result.Background = 1-Background;
+                result.Background = algorithm[0] == 1 ? 1-Background : 0;
                 result.UpdateBounds();
                 return result;       
             }
