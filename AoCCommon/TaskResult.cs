@@ -1,6 +1,4 @@
-using System;
-
-namespace AoC2021.Tasks
+namespace AoCCommon
 {
     public record TaskResult
     {

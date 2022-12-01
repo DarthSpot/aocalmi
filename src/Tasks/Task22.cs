@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Xml.Xsl;
+using AoCCommon;
 
 namespace AoC2021.Tasks
 {

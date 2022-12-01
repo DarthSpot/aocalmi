@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using AoCCommon;
 
 namespace AoC2021.Tasks
 {

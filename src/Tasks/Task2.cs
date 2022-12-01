@@ -1,4 +1,5 @@
 using System;
+using AoCCommon;
 
 namespace AoC2021.Tasks
 {

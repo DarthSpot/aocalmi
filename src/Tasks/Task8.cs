@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AoCCommon;
 
 namespace AoC2021.Tasks
 {

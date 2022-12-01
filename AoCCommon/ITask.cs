@@ -1,7 +1,6 @@
 using System.Diagnostics;
-using System.IO;
 
-namespace AoC2021.Tasks
+namespace AoCCommon
 {
     public abstract class ITask
     {

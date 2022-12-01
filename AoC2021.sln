@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2021", "src\AoC2021.csproj", "{126EDF75-282D-4C06-B2F1-96EEB30F376B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2022", "AoC2022\AoC2022.csproj", "{FD23C943-4CDC-4636-9FBD-658576D5AC3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoCCommon", "AoCCommon\AoCCommon.csproj", "{C9E8E394-2BCB-4E09-AF0B-263C51676A26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{126EDF75-282D-4C06-B2F1-96EEB30F376B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{126EDF75-282D-4C06-B2F1-96EEB30F376B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{126EDF75-282D-4C06-B2F1-96EEB30F376B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD23C943-4CDC-4636-9FBD-658576D5AC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD23C943-4CDC-4636-9FBD-658576D5AC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD23C943-4CDC-4636-9FBD-658576D5AC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD23C943-4CDC-4636-9FBD-658576D5AC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9E8E394-2BCB-4E09-AF0B-263C51676A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9E8E394-2BCB-4E09-AF0B-263C51676A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9E8E394-2BCB-4E09-AF0B-263C51676A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9E8E394-2BCB-4E09-AF0B-263C51676A26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

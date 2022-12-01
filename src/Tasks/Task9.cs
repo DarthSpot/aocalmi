@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using AoCCommon;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
