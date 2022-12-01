@@ -27,8 +27,8 @@ namespace AoC2021
                     var inputPath = Path.Combine(Path.Combine(Path.Combine(
                         new DirectoryInfo(Assembly.GetExecutingAssembly().Location).Parent.Parent.Parent.Parent.Parent
                             .FullName,
-                        "2022"),
-                        "input"
+                        "input"),
+                        "2021"
                     ), arg);
                     instance.InputPath = inputPath;
                     Console.WriteLine($"[{arg}] - Result (simple): {instance.RunPartOne()}");

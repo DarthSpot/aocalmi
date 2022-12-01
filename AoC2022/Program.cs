@@ -17,14 +17,14 @@ namespace AoC2022
 
             foreach (var arg in args)
             {
-                Console.WriteLine(arg);
                 try
                 {
                     var instance = Activator.CreateInstance("AoC2022", "AoC2022.Tasks.Task" + arg).Unwrap() as ITask;
-                    var inputPath = Path.Combine(Path.Combine(
-                        new DirectoryInfo(Assembly.GetExecutingAssembly().Location).Parent.Parent.Parent.Parent.Parent
-                            .FullName,
-                        "input"
+                    var inputPath = Path.Combine(Path.Combine(Path.Combine(
+                            new DirectoryInfo(Assembly.GetExecutingAssembly().Location).Parent.Parent.Parent.Parent.Parent
+                                .FullName,
+                            "input"),
+                        "2022"
                     ), arg);
                     instance.InputPath = inputPath;
                     Console.WriteLine($"[{arg}] - Result (simple): {instance.RunPartOne()}");
